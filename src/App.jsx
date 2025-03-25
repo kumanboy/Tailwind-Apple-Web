@@ -4,9 +4,14 @@ import Navbar from "./components/Navbar.jsx";
 
 const App = () => {
     const [frameZoom, setFrameZoom] = useState(false)
+    const [activePage, setActivePage] = useState(0);
 
     const toggleZoom = () => {
         setFrameZoom(!frameZoom);
+    }
+
+    const handleNavClick = (pageIndex) =>{
+        setActivePage(pageIndex);
     }
 
     return (
@@ -17,7 +22,7 @@ const App = () => {
                 max-h-[90vh] border border-gray-300 rounded-2xl resize overflow-auto relative transition-all duration-300
                 "`}
             >
-                <Navbar/>
+                <Navbar activePage={activePage} handleNavClick={handleNavClick} />
                 <Controls toggleZoom={toggleZoom} frameZoom={frameZoom} />
             </div>
         </div>
