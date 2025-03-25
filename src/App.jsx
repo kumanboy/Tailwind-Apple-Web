@@ -12,6 +12,7 @@ const App = () => {
     const [frameZoom, setFrameZoom] = useState(false);
     const [activePage, setActivePage] = useState(0);
     const [isLgScreen, setIsLgScreen] = useState(window.innerWidth > 1024)
+    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
@@ -39,6 +40,10 @@ const App = () => {
         setActivePage(pageIndex);
     }
 
+    const toggleNavbar = () =>{
+        setIsNavbarOpen(!isNavbarOpen);
+    }
+
     return (
         <div className="w-full h-screen grid place-items-center">
             <div
@@ -47,7 +52,7 @@ const App = () => {
                 max-h-[90vh] border border-gray-300 rounded-2xl resize overflow-auto relative transition-all duration-300 flex 
                 "`}
             >
-                <Navbar activePage={activePage} handleNavClick={handleNavClick} />
+                <Navbar activePage={activePage} handleNavClick={handleNavClick} isNavbarOpen={isNavbarOpen} toggleNavbar={toggleNavbar} />
                 <Controls toggleZoom={toggleZoom} frameZoom={frameZoom} resetPage={resetPage} activePage={activePage} />
                 <div className={"flex-grow"}>
                     <PageTransition activePage={activePage}>
