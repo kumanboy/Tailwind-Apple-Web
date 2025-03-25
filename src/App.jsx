@@ -1,5 +1,5 @@
 import Controls from "./components/Controls.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Navbar from "./components/Navbar.jsx";
 import Home from "./components/Home.jsx";
 import Iphone from "./components/Iphone.jsx";
@@ -9,11 +9,26 @@ import IMac from "./components/IMac.jsx";
 import PageTransition from "./components/PageTransition.jsx";
 
 const App = () => {
-    const [frameZoom, setFrameZoom] = useState(false)
+    const [frameZoom, setFrameZoom] = useState(false);
     const [activePage, setActivePage] = useState(0);
+    const [isLgScreen, setIsLgScreen] = useState(window.innerWidth > 1024)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsLgScreen(window.innerWidth >= 1024);
+            if (window.innerWidth < 1024) {
+                setFrameZoom(true)
+            }
+        }
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    },[]);
+
 
     const toggleZoom = () => {
-        setFrameZoom(!frameZoom);
+        if (isLgScreen) {
+            setFrameZoom(!frameZoom);
+        }
     }
 
     const resetPage = () => {

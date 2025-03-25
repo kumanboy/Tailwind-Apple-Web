@@ -9,9 +9,9 @@ const Watch = () => {
             </h1>
             <div className={`w-full flex justify-around`}>
                 {watchModels.map((watchModel) => (
-                    <div className={`w-60 h-[430px] flex flex-col justify-around group`}>
+                    <div key={Math.random()} className={`w-60 h-[430px] flex flex-col justify-around group`}>
 
-                        <div key={Math.random()} className={`w-full h-64 mb-4 overflow-hidden relative`}>
+                        <div className={`w-full h-64 mb-4 overflow-hidden relative`}>
                             <img
                                 src={watchModel.imgs[0]}
                                 alt={watchModel.name}

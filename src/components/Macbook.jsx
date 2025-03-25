@@ -42,7 +42,7 @@ const Macbook = () => {
                     <img
                         src={currentColor.img}
                         alt={`MacBook Air with ${currentMb.chip} chip`}
-                        className={`2xl:w-72 xl:52 w-48 h-full 2xl:mt-0 sm:-mt-6`}
+                        className={`2xl:w-72 xl:52 w-48 h-full 2xl:mt-0 sm:-mt-6 object-contain m-auto`}
                     />
                 </div>
                     <span className={`2xl:text-lg xl:text-sm font-medium text-gray-800 mb-2 text-center md:text-left`}>
