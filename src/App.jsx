@@ -6,6 +6,7 @@ import Iphone from "./components/Iphone.jsx";
 import Macbook from "./components/Macbook.jsx";
 import Watch from "./components/Watch.jsx";
 import IMac from "./components/IMac.jsx";
+import PageTransition from "./components/PageTransition.jsx";
 
 const App = () => {
     const [frameZoom, setFrameZoom] = useState(false)
@@ -13,6 +14,10 @@ const App = () => {
 
     const toggleZoom = () => {
         setFrameZoom(!frameZoom);
+    }
+
+    const resetPage = () => {
+        setActivePage(0);
     }
 
     const handleNavClick = (pageIndex) =>{
@@ -28,13 +33,15 @@ const App = () => {
                 "`}
             >
                 <Navbar activePage={activePage} handleNavClick={handleNavClick} />
-                <Controls toggleZoom={toggleZoom} frameZoom={frameZoom} />
+                <Controls toggleZoom={toggleZoom} frameZoom={frameZoom} resetPage={resetPage} activePage={activePage} />
                 <div className={"flex-grow"}>
-                    {/*<Home/>*/}
-                    {/*<Iphone/>*/}
-                    {/*<Macbook/>*/}
-                    {/*<Watch/>*/}
-                    <IMac/>
+                    <PageTransition activePage={activePage}>
+                        <Home onNavigate={handleNavClick}/>
+                        <Iphone/>
+                        <Macbook/>
+                        <Watch/>
+                        <IMac/>
+                    </PageTransition>
                 </div>
             </div>
         </div>

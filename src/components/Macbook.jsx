@@ -13,7 +13,7 @@ const Macbook = () => {
         setSelectedColor(0)
     }
     return (
-        <div className={`flex flex-col items-center justify-around bg-white p-8`}>
+        <div className={`flex flex-col items-center justify-around bg-white p-8 h-full`}>
             <h1 className={`2xl:text-4xl xl:text-3xl md:text-2xl font-semibold text-gray-800 mb-5`}>
                 Choose your new MacBook Air
             </h1>
@@ -38,12 +38,13 @@ const Macbook = () => {
                 ))}
             </div>
             <div className={`flex flex-col 2xl:p-4 md:items-start items-center`}>
-                <div className={`w-80 h-64 2xl:mb-0 mb-8`}>
+                <div className={`w-80 h-64 2xl:mb-0 -mb-8`}>
                     <img
                         src={currentColor.img}
                         alt={`MacBook Air with ${currentMb.chip} chip`}
-                        className={`2xl:w-72 xl:52 w-48 h-full 2xl:mt-0 sm:mt-6`}
+                        className={`2xl:w-72 xl:52 w-48 h-full 2xl:mt-0 sm:-mt-6`}
                     />
+                </div>
                     <span className={`2xl:text-lg xl:text-sm font-medium text-gray-800 mb-2 text-center md:text-left`}>
                         {currentColor.label}
                     </span>
@@ -61,7 +62,7 @@ const Macbook = () => {
                         ))}
                     </div>
                     <img
-                        src={currentMb.icon} alt={`Apple ${currentMb.chip} Chip`} className={`w-12 h-12 2xl:mb-2 xl:mb-2`}
+                        src={currentMb.icon} alt={`Apple ${currentMb.chip} Chip`} className={`w-12 h-12 2xl:mb-4 xl:mb-2`}
                     />
                     <div className={`2xl:mb-4 mt-4 xl:mb-2 text-center md:text-left`}>
                         {currentMb.specs.map((spec) => (
@@ -78,7 +79,6 @@ const Macbook = () => {
                     >
                         Buy
                     </button>
-                </div>
             </div>
         </div>
     )
