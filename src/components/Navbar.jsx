@@ -1,10 +1,12 @@
 import React from 'react'
 import {navItems} from "../data/index.js";
 
-const Navbar = ({activePage, handleNavClick}) => {
+const Navbar = ({activePage, handleNavClick, toggleNavbar, isNavbarOpen}) => {
     return (
         <>
-            <div className="2xl:w-80 xl:w-52 w-44 h-full bg-blue-600 flex flex-col justify-between pt-5 pl-6 pb-14 md:pb-0 absolute md:relative z-10 -translate-x-110">
+            <div
+                className={`2xl:w-80 xl:w-52 w-44 h-full bg-blue-600 flex flex-col justify-between pt-5 pl-6 pb-14 md:pb-0 absolute md:relative z-10 transition-transform duration-300 ${
+                    isNavbarOpen ? 'translate-x-0' : '-translate-x-110 md:-translate-x-0'}`}>
                 <a href={"#"} className={"2xl:text-2xl xl:text-xl font-bold text-white md-14 tracking-wider"}>
                     Apple Products
                 </a>
@@ -33,8 +35,13 @@ const Navbar = ({activePage, handleNavClick}) => {
 
                 </div>
             </div>
-            <button className={`fixed md:hidden top-4 left-4 p-2 text-4xl text-blue-400 z-30`}>
-                <i className={"bx bx-menu"}></i>
+            <button className={`fixed md:hidden top-4 left-4 p-2 text-4xl text-blue-400 z-30`} onClick={toggleNavbar}>
+                {
+                    isNavbarOpen ?
+                            <i className={`bx bx-x`}></i>
+                        :
+                            <i className={"bx bx-menu"}></i>
+                }
             </button>
         </>
     )
