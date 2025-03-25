@@ -64,7 +64,7 @@ const Macbook = () => {
                         src={currentMb.icon} alt={`Apple ${currentMb.chip} Chip`} className={`w-12 h-12 2xl:mb-2 xl:mb-2`}
                     />
                     <div className={`2xl:mb-4 mt-4 xl:mb-2 text-center md:text-left`}>
-                        {currentMb.specs.map((spec,index) => (
+                        {currentMb.specs.map((spec) => (
                             <p
                                 key={Math.random()}
                                 className={`2xl:text-lg xl:text-base font-semibold text-gray-800 mb-0.5`}>
